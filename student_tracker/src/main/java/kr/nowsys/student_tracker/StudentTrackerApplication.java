@@ -1,5 +1,7 @@
 package kr.nowsys.student_tracker;
 
+import kr.nowsys.student_tracker.dao.StudentDao;
+import kr.nowsys.student_tracker.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,9 +15,20 @@ public class StudentTrackerApplication {
     }
 
     @Bean
-    CommandLineRunner runner() {
+    CommandLineRunner runner(StudentDao studentDao) {
         return args -> {
-            System.out.println("something run");
+            createStudent(studentDao);
         };
+    }
+
+    void createStudent(StudentDao studentDao) {
+
+        Student s = new Student("S B.", "Han", "exm@example.org");
+        System.out.println("Create Student : " + s);
+
+        studentDao.save(s);
+        System.out.println("Saved Student : " + s);
+
+
     }
 }
