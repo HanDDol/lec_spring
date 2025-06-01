@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class StudentTrackerApplication {
 
@@ -17,7 +19,8 @@ public class StudentTrackerApplication {
     @Bean
     CommandLineRunner runner(StudentDao studentDao) {
         return args -> {
-            createStudent(studentDao);
+            // createStudent(studentDao);
+            showAllStudents(studentDao);
         };
     }
 
@@ -29,6 +32,16 @@ public class StudentTrackerApplication {
         studentDao.save(s);
         System.out.println("Saved Student : " + s);
 
+        Student rS = studentDao.findById(s.getId());
+        System.out.println("Read Student : " + rS);
 
+    }
+
+    void showAllStudents(StudentDao studentDao) {
+        List<Student> students = studentDao.findAll();
+
+        for( Student s : students ) {
+            System.out.println("Student : " + s);
+        }
     }
 }
