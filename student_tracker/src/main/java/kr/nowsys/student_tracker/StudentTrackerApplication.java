@@ -21,8 +21,18 @@ public class StudentTrackerApplication {
         return args -> {
 //            createStudent(studentDao);
 //            showAllStudents(studentDao);
-            updateStudent(studentDao);
+//            updateStudent(studentDao);
+//            removeStudent(studentDao);
+            clearStudents(studentDao);
         };
+    }
+
+    private void clearStudents(StudentDao studentDao) {
+        studentDao.deleteAll();
+    }
+
+    private void removeStudent(StudentDao studentDao) {
+        studentDao.delete(2);
     }
 
     private void updateStudent(StudentDao studentDao) {
