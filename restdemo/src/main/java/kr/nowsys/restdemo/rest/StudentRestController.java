@@ -2,11 +2,11 @@ package kr.nowsys.restdemo.rest;
 
 import jakarta.annotation.PostConstruct;
 import kr.nowsys.restdemo.entity.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +24,24 @@ class StudentRestController {
         students.add(new Student("Third", "Kang"));
     }
 
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorReponse> handleNotFoundStudent(StudentNotFoundException ex) {
+        StudentErrorReponse error = new StudentErrorReponse(
+                HttpStatus.NOT_FOUND.value(),
+                ex.getMessage(),
+                System.currentTimeMillis());
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorReponse> handleException(Exception ex) {
+        StudentErrorReponse error = new StudentErrorReponse(
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(),
+                System.currentTimeMillis());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
     @GetMapping("/students")
     public List<Student> getStudents() {
         return students;
@@ -31,6 +49,9 @@ class StudentRestController {
 
     @GetMapping("/students/{studentId}")
     public Student getStudents(@PathVariable int studentId) {
+        if (studentId < 0 || studentId >= students.size()) {
+            throw new StudentNotFoundException("Student Id not found - " + studentId);
+        }
         return students.get(studentId);
     }
 
