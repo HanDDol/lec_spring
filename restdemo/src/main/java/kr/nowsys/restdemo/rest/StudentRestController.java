@@ -24,14 +24,6 @@ class StudentRestController {
         students.add(new Student("Third", "Kang"));
     }
 
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorReponse> handleNotFoundStudent(StudentNotFoundException ex) {
-        StudentErrorReponse error = new StudentErrorReponse(
-                HttpStatus.NOT_FOUND.value(),
-                ex.getMessage(),
-                System.currentTimeMillis());
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    }
 
     @ExceptionHandler
     public ResponseEntity<StudentErrorReponse> handleException(Exception ex) {
