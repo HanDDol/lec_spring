@@ -33,4 +33,10 @@ public class StudentDaoImpl implements StudentDao {
         TypedQuery<Student> ss = em.createQuery("SELECT s FROM Student s ORDER BY s.lastName", Student.class);
         return ss.getResultList();
     }
+
+    @Override
+    @Transactional
+    public void update(Student s) {
+        em.merge(s);
+    }
 }

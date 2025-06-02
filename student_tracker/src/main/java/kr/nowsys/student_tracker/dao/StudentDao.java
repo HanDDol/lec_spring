@@ -10,4 +10,6 @@ public interface StudentDao {
     Student findById(int id);
 
     List<Student> findAll();
+
+    void update(Student s);
 }

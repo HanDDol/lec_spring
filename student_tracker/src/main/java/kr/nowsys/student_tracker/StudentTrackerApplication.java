@@ -19,9 +19,17 @@ public class StudentTrackerApplication {
     @Bean
     CommandLineRunner runner(StudentDao studentDao) {
         return args -> {
-            // createStudent(studentDao);
-            showAllStudents(studentDao);
+//            createStudent(studentDao);
+//            showAllStudents(studentDao);
+            updateStudent(studentDao);
         };
+    }
+
+    private void updateStudent(StudentDao studentDao) {
+        Student s = studentDao.findById(1);
+
+        s.setFirstName("Saved");
+        studentDao.update(s);
     }
 
     void createStudent(StudentDao studentDao) {
