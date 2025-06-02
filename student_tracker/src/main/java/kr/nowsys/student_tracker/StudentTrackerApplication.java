@@ -19,11 +19,11 @@ public class StudentTrackerApplication {
     @Bean
     CommandLineRunner runner(StudentDao studentDao) {
         return args -> {
-//            createStudent(studentDao);
+            createStudent(studentDao);
 //            showAllStudents(studentDao);
 //            updateStudent(studentDao);
 //            removeStudent(studentDao);
-            clearStudents(studentDao);
+//            clearStudents(studentDao);
         };
     }
 
