@@ -2,7 +2,6 @@ package kr.nowsys.employees.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import kr.nowsys.employees.dao.EmployeeDao;
 import kr.nowsys.employees.entity.Employee;
 import kr.nowsys.employees.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;

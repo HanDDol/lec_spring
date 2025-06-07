@@ -1,17 +1,18 @@
 package kr.nowsys.employees.service;
 
 import jakarta.transaction.Transactional;
-import kr.nowsys.employees.dao.EmployeeDao;
+import kr.nowsys.employees.dao.EmployeeRepository;
 import kr.nowsys.employees.entity.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
-    private EmployeeDao employeeDao;
+    private EmployeeRepository employeeDao;
 
-    public EmployeeServiceImpl(EmployeeDao employeeDao) {
+    public EmployeeServiceImpl(EmployeeRepository employeeDao) {
         this.employeeDao = employeeDao;
     }
 
@@ -22,7 +23,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public Employee findById(int id) {
-        return this.employeeDao.findById(id);
+        Optional<Employee> e = this.employeeDao.findById(id);
+        if (e.isPresent())
+            return e.get();
+        else
+            throw new RuntimeException("The Id does not exist - " + id);
     }
 
     @Override
