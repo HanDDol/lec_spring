@@ -13,12 +13,7 @@
             <option th:each="c : ${countries}" th:value="${c}" th:text="${c}" />
         </select>
 
-        <input type="radio" th:field="*{favoritePL}" th:value="C"> C++ </input>
-        <input type="radio" th:field="*{favoritePL}" th:value="Rust"> Rust </input>
-        <input type="radio" th:field="*{favoritePL}" th:value="Python"> Python </input>
-<!--        <select type="checkbox" th:field="*{favoritePL}">-->
-<!--            <option th:each="p : ${programmingLanguages}" th:value="${p}" th:text="${p}" />-->
-<!--        </select>-->
+        <input type="radio" th:each="p : ${programmingLanguages}" th:field="*{favoritePL}" th:value="${p}" th:text="${p}" />\
         <input type="submit" />
     </form>
 </body>
