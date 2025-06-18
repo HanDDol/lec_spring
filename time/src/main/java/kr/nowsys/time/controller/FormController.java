@@ -21,11 +21,11 @@ public class FormController {
     }
 
     @RequestMapping("/processForm2")
-    public String processForm2(@RequestParam String studentName, Model model) {
+    public String processForm2(@RequestParam("studentName") String theName, Model model) {
 
 //        String studentName = request.getParameter("studentName");
 
-        model.addAttribute("message", studentName + "Message required xxx");
+        model.addAttribute("message", theName + "Message required xxx");
 
         return "hello-world2";
     }
