@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FormController {
@@ -20,11 +21,11 @@ public class FormController {
     }
 
     @RequestMapping("/processForm2")
-    public String processForm2(HttpServletRequest request, Model model) {
+    public String processForm2(@RequestParam String studentName, Model model) {
 
-        String studentName = request.getParameter("studentName");
+//        String studentName = request.getParameter("studentName");
 
-        model.addAttribute("message", studentName + "Message required");
+        model.addAttribute("message", studentName + "Message required xxx");
 
         return "hello-world2";
     }
