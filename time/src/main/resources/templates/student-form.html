@@ -13,7 +13,13 @@
             <option th:each="c : ${countries}" th:value="${c}" th:text="${c}" />
         </select>
 
-        <input type="radio" th:each="p : ${programmingLanguages}" th:field="*{favoritePL}" th:value="${p}" th:text="${p}" />\
+        <input type="radio" th:each="p : ${programmingLanguages}" th:field="*{favoritePL}" th:value="${p}" th:text="${p}" />
+
+        <input type="checkbox" th:each="o : ${oses}" th:field="*{favoriteOs}" th:value="${o}" th:text="${o}" />
+
+
+
+
         <input type="submit" />
     </form>
 </body>

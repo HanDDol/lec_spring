@@ -11,6 +11,15 @@
   <br>
   <p th:text="'Language : ' + ${student.favoritePL}" class="funny" />
 
+  <br>
+  <div>
+      <span> OS </span>
+      <ul>
+          <li th:each="o : ${student.favoriteOs}" th:text="${o}" />
+      </ul>
+
+  </div>
+
 
 </body>
 </html>

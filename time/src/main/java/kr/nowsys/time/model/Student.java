@@ -1,10 +1,21 @@
 package kr.nowsys.time.model;
 
+import java.util.List;
+
 public class Student {
     String firstName;
     String lastName;
     String country;
     String favoritePL;
+    List<String> favoriteOs;
+
+    public List<String> getFavoriteOs() {
+        return favoriteOs;
+    }
+
+    public void setFavoriteOs(List<String> favoriteOs) {
+        this.favoriteOs = favoriteOs;
+    }
 
     public String getFavoritePL() {
         return favoritePL;

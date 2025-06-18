@@ -20,6 +20,9 @@ public class FormController {
     @Value("${programmingLanguages}")
     List<String> programmingLanguages;
 
+    @Value("${oses}")
+    List<String> oses;
+
     @RequestMapping("/showForm")
     public String showForm() {
         return "hello-form";
@@ -46,6 +49,7 @@ public class FormController {
         model.addAttribute("student", new Student());
         model.addAttribute("countries", countries);
         model.addAttribute("programmingLanguages", programmingLanguages);
+        model.addAttribute("oses", oses);
         return "student-form";
     }
 
