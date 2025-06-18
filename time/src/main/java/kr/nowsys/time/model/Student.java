@@ -4,6 +4,15 @@ public class Student {
     String firstName;
     String lastName;
     String country;
+    String favoritePL;
+
+    public String getFavoritePL() {
+        return favoritePL;
+    }
+
+    public void setFavoritePL(String favoritePL) {
+        this.favoritePL = favoritePL;
+    }
 
     public Student() {
     }

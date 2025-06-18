@@ -10,11 +10,15 @@
         Last Name : <input type="text" th:field="${student.lastName}" placeholder="Name of Student" />
         <br>
         <select th:field="*{country}">
-            <option th:value="Brazil">Brazil </option>
-            <option th:value="Korea">Korea </option>
-            <option th:value="USA">USA </option>
-            <option th:value="France">France </option>
+            <option th:each="c : ${countries}" th:value="${c}" th:text="${c}" />
         </select>
+
+        <input type="radio" th:field="*{favoritePL}" th:value="C"> C++ </input>
+        <input type="radio" th:field="*{favoritePL}" th:value="Rust"> Rust </input>
+        <input type="radio" th:field="*{favoritePL}" th:value="Python"> Python </input>
+<!--        <select type="checkbox" th:field="*{favoritePL}">-->
+<!--            <option th:each="p : ${programmingLanguages}" th:value="${p}" th:text="${p}" />-->
+<!--        </select>-->
         <input type="submit" />
     </form>
 </body>

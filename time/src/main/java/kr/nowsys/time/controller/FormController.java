@@ -2,14 +2,23 @@ package kr.nowsys.time.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import kr.nowsys.time.model.Student;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class FormController {
+
+    @Value("${countries}")
+    List<String> countries;
+
+    @Value("${programmingLanguages}")
+    List<String> programmingLanguages;
 
     @RequestMapping("/showForm")
     public String showForm() {
@@ -35,6 +44,8 @@ public class FormController {
     @RequestMapping("/showStudentForm")
     public String showStudentForm(Model model) {
         model.addAttribute("student", new Student());
+        model.addAttribute("countries", countries);
+        model.addAttribute("programmingLanguages", programmingLanguages);
         return "student-form";
     }
 
